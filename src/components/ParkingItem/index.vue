@@ -1,5 +1,9 @@
 <script lang="ts" setup>
+import type { Parking } from '@/types/api'
 
+const { parking } = defineProps<{
+  parking: Parking
+}>()
 </script>
 
 <template>
@@ -9,7 +13,7 @@
       <div class="h-136rpx flex items-center justify-between">
         <div class="flex flex-col justify-center">
           <div class="text-32rpx text-#333333 font-semibold">
-            SM 城市广场
+            {{ parking.name }}
           </div>
           <div class="flex items-center gap-12rpx text-24rpx text-#555555">
             <div>距此995米</div>

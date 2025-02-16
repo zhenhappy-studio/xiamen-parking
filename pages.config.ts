@@ -9,7 +9,7 @@ export default defineUniPages({
     backgroundTextStyle: '@bgTxtStyle',
     navigationBarBackgroundColor: '#000000',
     navigationBarTextStyle: '@navTxtStyle',
-    navigationBarTitleText: 'Vitesse-Uni',
+    navigationBarTitleText: ' 鹭岛停车',
     navigationStyle: 'custom',
   },
   // tabBar: {

@@ -72,6 +72,10 @@ export default defineManifestConfig({
   'h5': {
     darkmode: true,
     themeLocation: 'theme.json',
+    router: {
+      mode: 'hash',
+      base: '/xiamen-parking',
+    },
   },
   'uniStatistics': {
     enable: false,

@@ -1,13 +1,41 @@
 <script lang="ts" setup>
+import axios from '@/axios'
+import type { Parking } from '@/types/api'
 import StatusBar from '@/components/StatusBar/index.vue'
 import ParkingItem from '@/components/ParkingItem/index.vue'
+
+let parkingList = $ref<Parking[]>([])
+
+onLoad(async () => {
+  uni.onNetworkStatusChange(async (res) => {
+    if (res.isConnected)
+      await getData()
+  })
+  await getData()
+})
+
+async function getData() {
+  try {
+    parkingList = await axios.get<Parking[]>('/parking')
+  }
+  catch {
+    uni.showToast({
+      title: '停车场信息加载失败',
+      icon: 'error',
+    })
+  }
+}
+
+async function handleParkingClick(id: number) {
+  uni.navigateTo({
+    url: `/pages/parking/detail?id=${id}`,
+  })
+}
 </script>
 
 <template>
   <div>
-    <div
-      class="rounded-br-40rpx from-#F5FCFF to-#E8F7FE bg-gradient-to-b pb-36rpx"
-    >
+    <div class="rounded-br-40rpx from-#F5FCFF to-#E8F7FE bg-gradient-to-b pb-36rpx">
       <StatusBar />
       <div class="mt-10rpx h-60rpx flex items-center gap-12rpx px-32rpx">
         <img class="h-40rpx" src="./img/title.png" mode="heightFix" />
@@ -39,15 +67,12 @@ import ParkingItem from '@/components/ParkingItem/index.vue'
           </div>
         </div>
         <div class="my-46rpx flex flex-col gap-32rpx">
-          <ParkingItem />
-          <ParkingItem />
-          <ParkingItem />
-          <ParkingItem />
-          <ParkingItem />
-          <ParkingItem />
-          <ParkingItem />
-          <ParkingItem />
-          <ParkingItem />
+          <ParkingItem
+            v-for="parking in parkingList"
+            :key="parking.id"
+            :parking="parking"
+            @click="handleParkingClick(parking.id)"
+          />
         </div>
       </div>
     </div>
