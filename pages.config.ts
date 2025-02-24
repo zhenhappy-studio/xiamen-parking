@@ -14,10 +14,10 @@ export default defineUniPages({
     backgroundColorBottom: '@bgColorBottom',
     backgroundColorTop: '@bgColorTop',
     backgroundTextStyle: '@bgTxtStyle',
-    navigationBarBackgroundColor: '#000000',
+    navigationBarBackgroundColor: '@navBgColor',
     navigationBarTextStyle: '@navTxtStyle',
-    navigationBarTitleText: ' 鹭岛停车',
-    navigationStyle: 'custom',
+    navigationBarTitleText: '鹭岛停车',
+    // navigationStyle: 'custom',
   },
   // tabBar: {
   //   backgroundColor: "@tabBgColor",

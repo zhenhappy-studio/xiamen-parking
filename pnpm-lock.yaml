@@ -51,8 +51,8 @@ importers:
         specifier: 3.0.0-4020420240722002
         version: 3.0.0-4020420240722002(@vueuse/core@11.2.0(vue@3.4.38(typescript@5.5.4)))(postcss@8.4.47)(rollup@4.24.3)(vue@3.4.38(typescript@5.5.4))
       '@dcloudio/uni-ui':
-        specifier: 1.2.10
-        version: 1.2.10
+        specifier: 1.5.7
+        version: 1.5.7
       '@uni-helper/uni-network':
         specifier: ^0.20.0
         version: 0.20.0(@vueuse/core@11.2.0(vue@3.4.38(typescript@5.5.4)))(vue@3.4.38(typescript@5.5.4))
@@ -927,9 +927,8 @@ packages:
   '@dcloudio/uni-stat@3.0.0-4020420240722002':
     resolution: {integrity: sha512-eLiNyyGlaHuEtNOBLIcr7x4+aEsg7IEHq8RlLl21zQcpvDAFaa3IwMtyMaLZa5UUg/LPQA6vITCHx/O2R0uXrQ==}
 
-  '@dcloudio/uni-ui@1.2.10':
-    resolution: {integrity: sha512-IIcy8HYvSt97AaqideSQSHcXR0daoa1ay4IfSLMNf4CTid5u0Lxx4SdzQwYWGDeUUbKPtQ7CSBPRqN0LmXRsFQ==}
-    deprecated: '@1.4.29'
+  '@dcloudio/uni-ui@1.5.7':
+    resolution: {integrity: sha512-DugxSIrQrze1FLdUOj9a+JEQ0bHGjnJTcGUK1mN/MivKg7nuKJBRWk5Ipa9sUdoBznX6ndz5h2e7Uao6x1CdCw==}
 
   '@dcloudio/uni-vue-devtools@3.0.0-4020420240722002':
     resolution: {integrity: sha512-clN+gS4k3wveRaVVQeo24O7UQW+x6czaz7/uQ6Mh8qSg8os1BOgbzfOYVdzV0ArdRbYTT6BzEkO/AjgPkXkXWA==}
@@ -7253,7 +7252,7 @@ snapshots:
       - vue
       - webpack-sources
 
-  '@dcloudio/uni-ui@1.2.10': {}
+  '@dcloudio/uni-ui@1.5.7': {}
 
   '@dcloudio/uni-vue-devtools@3.0.0-4020420240722002(@vueuse/core@11.2.0(vue@3.4.38(typescript@5.5.4)))(postcss@8.4.47)(rollup@4.24.3)(vue@3.4.38(typescript@5.5.4))':
     dependencies:

@@ -66,12 +66,6 @@ onPullDownRefresh(async () => {
   uni.stopPullDownRefresh()
 })
 
-async function handleParkingClick(id: number) {
-  uni.navigateTo({
-    url: `/pages/parking/detail?id=${id}`,
-  })
-}
-
 function handleSearchClick() {
   uni.navigateTo({
     url: '/pages/search/index',
@@ -81,14 +75,16 @@ function handleSearchClick() {
 
 <template>
   <view class="min-h-screen">
+    <uni-nav-bar status-bar :fixed="true" :border="false" :height="0" />
+
     <view class="rounded-br-40rpx from-#F5FCFF to-#E8F7FE bg-gradient-to-b pb-36rpx">
-      <view class="h-60rpx flex items-center gap-12rpx px-32rpx">
-        <img class="h-40rpx" src="./img/title.png" mode="heightFix" />
-        <img class="h-42rpx" src="./img/subhead.png" mode="heightFix" />
+      <view class="h-88rpx flex items-center gap-12rpx px-32rpx">
+        <image class="h-40rpx" src="./img/title.png" mode="heightFix" />
+        <image class="h-42rpx" src="./img/subhead.png" mode="heightFix" />
       </view>
       <swiper class="mt-36rpx h-212rpx" :circular="true">
         <swiper-item class="flex-center">
-          <img
+          <image
             class="h-212rpx w-686rpx"
             src="./img/banner.png"
             mode="scaleToFill"
@@ -98,28 +94,25 @@ function handleSearchClick() {
     </view>
     <view class="bg-#E8F7FE">
       <view class="rounded-tl-40rpx bg-white px-30rpx py-50rpx">
-        <view class="flex justify-between">
-          <div
+        <view class="mb-32rpx flex justify-between">
+          <view
             class="h-64rpx flex items-center gap-10rpx text-32rpx text-#333333 font-semibold"
           >
-            <div class="h-32rpx w-8rpx rounded-4rpx bg-#599AFA" />
+            <view class="h-32rpx w-8rpx rounded-4rpx bg-#599AFA" />
             快捷停车
-          </div>
-          <div
-            class="h-64rpx w-168rpx flex-center gap-20rpx rounded-32rpx bg-#F7F7F7 text-#999999"
-            @click="handleSearchClick"
+          </view>
+          <view
+            class="h-64rpx w-188rpx flex-center gap-20rpx rounded-32rpx bg-#F7F7F7 text-#999999"
+            @tap="handleSearchClick"
           >
-            <img class="h-48rpx w-48rpx" src="./img/ic-search.png" />搜索
-          </div>
+            <image class="h-48rpx w-48rpx" src="/static/img/search.png" />搜索
+          </view>
         </view>
-        <view class="my-46rpx flex flex-col gap-32rpx">
-          <ParkingItem
-            v-for="parking in parkingList"
-            :key="parking.id"
-            :parking="parking"
-            @click="handleParkingClick(parking.id)"
-          />
-        </view>
+        <ParkingItem
+          v-for="parking in parkingList"
+          :key="parking.id"
+          :parking="parking"
+        />
         <uni-load-more
           v-if="parkingList.length > 0"
           :status="status"
@@ -140,9 +133,8 @@ function handleSearchClick() {
 <!-- 使用 type="home" 属性设置首页 -->
 <route type="home" lang="json">
 {
-  "layout": "default",
   "style": {
-    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom",
     "enablePullDownRefresh": true,
     "onReachBottomDistance": 150
   }

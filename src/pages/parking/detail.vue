@@ -2,18 +2,19 @@
 import { onLoad } from '@dcloudio/uni-app'
 import dayjs from 'dayjs'
 import axios from '@/axios'
-import type { Parking } from '@/types/api'
-
-interface ParkingDetail extends Parking {
-  availableSpaces: number
-  totalSpaces: number
-  price: number
-  content: string // 富文本内容
-  table: string[][] // 价格表格数据
-  updatedAt: Date
-}
+import type { ParkingDetail } from '@/types/api'
 
 let parking = $ref<ParkingDetail | null>(null)
+let richTextNodes = $ref('')
+
+// 处理富文本内容
+function processRichText(content: string) {
+  return content
+    // 处理段落
+    .replace(/<p/g, '<p class="rich-text-p"')
+    // 处理图片
+    .replace(/<img/g, '<img class="rich-text-img"')
+}
 
 onLoad(async (query) => {
   const id = query?.id as string
@@ -27,6 +28,8 @@ onLoad(async (query) => {
 
   try {
     parking = await axios.get<ParkingDetail>(`/parking/${id}`)
+    // 处理富文本内容
+    richTextNodes = processRichText(parking.content)
   }
   catch {
     uni.showToast({
@@ -38,81 +41,68 @@ onLoad(async (query) => {
 </script>
 
 <template>
-  <div v-if="parking" class="min-h-screen bg-gray-100">
-    <!-- Main Content -->
-    <div class="px-32rpx py-48rpx">
-      <h2 class="mb-48rpx text-48rpx font-semibold">
+  <view>
+    <view v-if="parking" class="px-32rpx pb-68rpx pt-24rpx">
+      <!-- Parking Title -->
+      <view class="mb-48rpx text-48rpx font-semibold">
         {{ parking.name }}
-      </h2>
+      </view>
 
       <!-- Pricing Card -->
-      <div class="overflow-hidden rounded-20rpx bg-white">
+      <view class="overflow-hidden rounded-20rpx bg-white">
         <!-- Header -->
-        <div class="flex items-center justify-between bg-[#00A0E9] px-32rpx py-24rpx text-white">
-          <span class="text-36rpx">计费标准</span>
-          <span class="text-28rpx">数据更新时间：{{ dayjs(parking.updatedAt).format('YYYY.MM.DD') }}</span>
-        </div>
+        <view class="h-80rpx flex items-center justify-between bg-#00AEF4 px-32rpx text-white">
+          <text class="text-32rpx">
+            计费标准
+          </text>
+          <text class="text-26rpx">
+            数据更新时间：{{ dayjs(parking.updatedAt).format('YYYY.MM.DD') }}
+          </text>
+        </view>
 
         <!-- Pricing Table -->
-        <div class="bg-[#E8F6FC] p-32rpx">
-          <table class="w-full">
-            <tbody>
-              <tr
-                v-for="(row, index) in parking.table"
-                :key="index"
-                class="border-b border-gray-200 last:border-b-0"
-              >
-                <td class="py-16rpx text-32rpx">
-                  {{ row[0] }}
-                </td>
-                <td class="py-16rpx text-right text-32rpx">
-                  {{ row[1] }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+        <view class="bg-#E7F7FE px-48rpx py-36rpx">
+          <view class="flex flex-col gap-32rpx">
+            <view
+              v-for="(row, index) in parking.table"
+              :key="index"
+              class="h-66rpx flex justify-between border-b-2rpx border-white border-b-solid pb-22rpx text-32rpx font-medium last:border-b-0"
+            >
+              <view class="w-50% text-left">
+                {{ row[0] }}
+              </view>
+              <view class="w-50% text-right">
+                {{ row[1] }}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
 
       <!-- Parking Info -->
-      <div class="mt-48rpx p-32rpx">
-        <div
-          class="rich-text text-28rpx text-#666"
-          v-html="parking.content"
+      <view class="mt-48rpx p-32rpx">
+        <rich-text
+          class="rich-text"
+          :nodes="richTextNodes"
+          :selectable="true"
+          :preview-img="true"
+          :show-menu-by-longpress="true"
         />
-      </div>
+      </view>
 
       <!-- Action Button -->
-      <div class="fixed bottom-48rpx left-32rpx right-32rpx">
-        <button class="w-full rounded-16rpx bg-[#00A0E9] py-24rpx text-36rpx text-white">
-          去停车
-        </button>
-      </div>
-    </div>
-  </div>
+      <view class="mx-auto mt-48rpx h-96rpx w-686rpx flex-center rounded-full bg-#00AEF4 py-24rpx text-36rpx text-white font-semibold">
+        去停车
+      </view>
+    </view>
+  </view>
 </template>
 
-<style scoped>
-.rich-text :deep(p) {
-  margin-bottom: 16rpx;
-  line-height: 1.6;
-}
-
-.rich-text :deep(p:last-child) {
-  margin-bottom: 0;
-}
-
-/* 添加图片样式 */
-.rich-text :deep(img) {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-  border-radius: 8rpx;
-}
-
-.rich-text :deep(p:has(img)) {
-  text-align: center;
-  margin: 32rpx 0;
+<style lang="scss" scoped>
+.rich-text {
+  :deep(.rich-text-img) {
+    max-width: 100%;
+  }
 }
 </style>
 

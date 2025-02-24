@@ -8,6 +8,15 @@ export interface Parking {
   createdAt: Date
 }
 
+export interface ParkingDetail extends Parking {
+  availableSpaces: number
+  totalSpaces: number
+  price: number
+  content: string
+  table: string[][]
+  updatedAt: Date
+}
+
 // 基础响应类型
 export interface ErrorResponse {
   error: string
@@ -38,3 +47,5 @@ export interface PaginationResponse<T> {
 }
 
 export type ParkingResponse = PaginationResponse<Parking>
+
+export type GetParkingDetailResponse = ParkingDetail

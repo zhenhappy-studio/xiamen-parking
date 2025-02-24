@@ -9,9 +9,8 @@
     {
       "path": "pages/index/index",
       "type": "home",
-      "layout": "default",
       "style": {
-        "navigationBarTextStyle": "black",
+        "navigationStyle": "custom",
         "enablePullDownRefresh": true,
         "onReachBottomDistance": 150
       }
@@ -28,10 +27,10 @@
       "path": "pages/search/index",
       "type": "page",
       "style": {
-        "navigationStyle": "custom",
+        "navigationBarTitleText": "搜索",
         "navigationBarTextStyle": "black",
-        "onReachBottomDistance": 50,
-        "enablePullDownRefresh": true
+        "onReachBottomDistance": 150,
+        "enablePullDownRefresh": false
       }
     }
   ],
@@ -40,10 +39,9 @@
     "backgroundColorBottom": "@bgColorBottom",
     "backgroundColorTop": "@bgColorTop",
     "backgroundTextStyle": "@bgTxtStyle",
-    "navigationBarBackgroundColor": "#000000",
+    "navigationBarBackgroundColor": "@navBgColor",
     "navigationBarTextStyle": "@navTxtStyle",
-    "navigationBarTitleText": " 鹭岛停车",
-    "navigationStyle": "custom"
+    "navigationBarTitleText": "鹭岛停车"
   },
   "subPackages": []
 }
