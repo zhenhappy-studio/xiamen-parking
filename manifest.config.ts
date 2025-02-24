@@ -74,7 +74,6 @@ export default defineManifestConfig({
     themeLocation: 'theme.json',
     router: {
       mode: 'hash',
-      base: '/xiamen-parking',
     },
   },
   'uniStatistics': {
