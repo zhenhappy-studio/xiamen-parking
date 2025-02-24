@@ -1,7 +1,7 @@
 import { un } from '@uni-helper/uni-network'
 
 const instance = un.create({
-  baseUrl: 'https://i.wantmake.love:8681',
+  baseUrl: import.meta.env.VITE_API_BASE_URL,
   headers: {},
 })
 
