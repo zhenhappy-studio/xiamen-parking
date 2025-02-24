@@ -55,10 +55,14 @@ export default defineManifestConfig({
     appid: 'wxa8e12a0386587208',
     setting: {
       urlCheck: false,
+      es6: true,
+      postcss: true,
+      minified: true,
     },
     usingComponents: true,
     darkmode: false,
     themeLocation: 'theme.json',
+    lazyCodeLoading: 'requiredComponents',
   },
   'mp-alipay': {
     usingComponents: true,
