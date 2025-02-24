@@ -3,11 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - uniapp
-
-  pull_request:
-    branches:
-      - uniapp
+      - main
 
 env:
   TZ: Asia/Shanghai
@@ -30,8 +26,8 @@ jobs:
       - name: Setup node environment
         uses: actions/setup-node@v4
         with:
-          node-version-file: 'package.json'
-          cache: 'pnpm'
+          node-version-file: package.json
+          cache: pnpm
       - name: Get pnpm store directory
         shell: bash
         run: |
@@ -54,8 +50,8 @@ jobs:
           username: ${{ env.USERNAME }}
           key: ${{ env.KEY }}
           rm: true
-          source: "dist"
-          target: "${{ env.WEB_ROOT }}"
+          source: dist
+          target: '${{ env.WEB_ROOT }}'
       - name: Deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
