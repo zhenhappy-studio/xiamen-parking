@@ -67,8 +67,7 @@
     "darkmode": true,
     "themeLocation": "theme.json",
     "router": {
-      "mode": "hash",
-      "base": "/xiamen-parking"
+      "mode": "hash"
     }
   }
 }
