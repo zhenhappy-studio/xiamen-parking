@@ -43,12 +43,6 @@ function handleHistoryClick(kw: string) {
   handleSearch()
 }
 
-// 删除单个历史记录
-function deleteHistory(index: number) {
-  searchHistory.splice(index, 1)
-  uni.setStorageSync(HISTORY_KEY, searchHistory)
-}
-
 const status = $computed(() => {
   if (loading)
     return 'loading'
@@ -56,6 +50,7 @@ const status = $computed(() => {
     return 'noMore'
   return 'more'
 })
+
 async function handleSearch() {
   if (!keyword.trim()) {
     parkingList = [] // 清空搜索结果

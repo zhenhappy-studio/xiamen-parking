@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onLoad, onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app'
+import { onLoad, onPullDownRefresh, onReachBottom, onShareAppMessage } from '@dcloudio/uni-app'
 import axios from '@/axios'
 import type { Parking, ParkingResponse } from '@/types/api'
 import ParkingItem from '@/components/ParkingItem/index.vue'
@@ -17,6 +17,11 @@ const status = $computed(() => {
 })
 
 onLoad(async () => {
+  wx.showShareMenu({
+    withShareTicket: true,
+    menus: ['shareAppMessage', 'shareTimeline'],
+  })
+
   uni.onNetworkStatusChange(async (res) => {
     if (res.isConnected)
       await getData()
@@ -71,12 +76,20 @@ function handleSearchClick() {
     url: '/pages/search/index',
   })
 }
+
+// 小程序分享
+onShareAppMessage(() => {
+  return {
+    title: '鹭岛停车',
+    path: '/pages/index/index',
+    imageUrl: '/static/img/share.png',
+  }
+})
 </script>
 
 <template>
   <view class="min-h-screen">
     <uni-nav-bar status-bar :fixed="true" :border="false" :height="0" />
-
     <view class="rounded-br-40rpx from-#F5FCFF to-#E8F7FE bg-gradient-to-b pb-36rpx">
       <view class="h-88rpx flex items-center gap-12rpx px-32rpx">
         <image class="h-40rpx" src="./img/title.png" mode="heightFix" />

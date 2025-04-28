@@ -7,7 +7,7 @@ const { parking } = defineProps<{
 
 function handleClick(id: number) {
   uni.navigateTo({
-    url: `/pages/parking/detail?id=${id}`,
+    url: `/pages/parking/index?id=${id}`,
   })
 }
 </script>

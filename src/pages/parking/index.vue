@@ -17,6 +17,11 @@ function processRichText(content: string) {
 }
 
 onLoad(async (query) => {
+  wx.showShareMenu({
+    withShareTicket: true,
+    menus: ['shareAppMessage', 'shareTimeline'],
+  })
+
   const id = query?.id as string
   if (!id) {
     uni.showToast({
@@ -37,6 +42,21 @@ onLoad(async (query) => {
       icon: 'error',
     })
   }
+})
+
+// 小程序分享
+onShareAppMessage(() => {
+  return parking
+    ? {
+        title: parking.name,
+        path: `/pages/parking/index?id=${parking.id}`,
+        imageUrl: '/static/img/share.png',
+      }
+    : {
+        title: '鹭岛停车',
+        path: '/pages/index/index',
+        imageUrl: '/static/img/share.png',
+      }
 })
 </script>
 

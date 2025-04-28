@@ -16,7 +16,7 @@
       }
     },
     {
-      "path": "pages/parking/detail",
+      "path": "pages/parking/index",
       "type": "page",
       "style": {
         "navigationBarTitleText": "停车场详情",
