@@ -17,10 +17,12 @@ function processRichText(content: string) {
 }
 
 onLoad(async (query) => {
+  // #ifdef MP-WEIXIN
   wx.showShareMenu({
     withShareTicket: true,
     menus: ['shareAppMessage', 'shareTimeline'],
   })
+  // #endif
 
   const id = query?.id as string
   if (!id) {
@@ -44,6 +46,7 @@ onLoad(async (query) => {
   }
 })
 
+// #ifdef MP-WEIXIN
 // 小程序分享
 onShareAppMessage(() => {
   return parking
@@ -58,6 +61,7 @@ onShareAppMessage(() => {
         imageUrl: '/static/img/share.png',
       }
 })
+// #endif
 </script>
 
 <template>

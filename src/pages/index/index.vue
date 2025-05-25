@@ -17,10 +17,12 @@ const status = $computed(() => {
 })
 
 onLoad(async () => {
+  // #ifdef MP-WEIXIN
   wx.showShareMenu({
     withShareTicket: true,
     menus: ['shareAppMessage', 'shareTimeline'],
   })
+  // #endif
 
   uni.onNetworkStatusChange(async (res) => {
     if (res.isConnected)
@@ -77,6 +79,7 @@ function handleSearchClick() {
   })
 }
 
+// #ifdef MP-WEIXIN
 // 小程序分享
 onShareAppMessage(() => {
   return {
@@ -85,6 +88,7 @@ onShareAppMessage(() => {
     imageUrl: '/static/img/share.png',
   }
 })
+// #endif
 </script>
 
 <template>
