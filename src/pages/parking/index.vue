@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { onLoad } from '@dcloudio/uni-app'
 import dayjs from 'dayjs'
+import mpHtml from 'mp-html/dist/uni-app/components/mp-html/mp-html'
 import axios from '@/axios'
 import type { ParkingDetail } from '@/types/api'
 
@@ -105,12 +106,9 @@ onShareAppMessage(() => {
 
       <!-- Parking Info -->
       <view class="mt-48rpx p-32rpx">
-        <rich-text
+        <mp-html
           class="rich-text"
-          :nodes="richTextNodes"
-          :selectable="true"
-          :preview-img="true"
-          :show-menu-by-longpress="true"
+          :content="richTextNodes"
         />
       </view>
 

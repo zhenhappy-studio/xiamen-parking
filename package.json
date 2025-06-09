@@ -63,6 +63,7 @@
     "@uni-helper/uni-network": "^0.20.0",
     "@vueuse/core": "^11.0.3",
     "dayjs": "^1.11.13",
+    "mp-html": "^2.5.1",
     "pinia": "2.0.36",
     "vue": "~3.4.38",
     "vue-i18n": "^9.14.0"

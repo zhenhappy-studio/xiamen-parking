@@ -62,6 +62,9 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
+      mp-html:
+        specifier: ^2.5.1
+        version: 2.5.1
       pinia:
         specifier: 2.0.36
         version: 2.0.36(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4))
@@ -4507,6 +4510,9 @@ packages:
 
   module-alias@2.2.3:
     resolution: {integrity: sha512-23g5BFj4zdQL/b6tor7Ji+QY4pEfNH784BMslY9Qb0UnJWRAt+lQGLYmRaM0KDBwIG23ffEBELhZDP2rhi9f/Q==}
+
+  mp-html@2.5.1:
+    resolution: {integrity: sha512-7BEH8dnQ89kOIyjdoYni8zcc0QAg+lgEWg0n9or9q2D4l26JNG+KPzHfttDyisC/5S7aPBblpXrFTYQv475w/Q==}
 
   mrmime@2.0.0:
     resolution: {integrity: sha512-eu38+hdgojoyq63s+yTpN4XMBdt5l8HhMhc4VKLO9KM5caLIBvUm4thi7fFaxyTmCKeNnXZ5pAlBwCUnhA09uw==}
@@ -11575,6 +11581,8 @@ snapshots:
       ufo: 1.5.4
 
   module-alias@2.2.3: {}
+
+  mp-html@2.5.1: {}
 
   mrmime@2.0.0: {}
 
