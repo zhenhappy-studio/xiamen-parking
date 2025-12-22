@@ -78,6 +78,10 @@ export default defineManifestConfig({
     themeLocation: 'theme.json',
     router: {
       mode: 'hash',
+      /**
+       * 基础路径
+       */
+      base: '/xiamen-parking',
     },
   },
   'uniStatistics': {
