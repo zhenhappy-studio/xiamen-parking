@@ -81,7 +81,7 @@ export default defineManifestConfig({
       /**
        * 基础路径
        */
-      base: '/xiamen-parking',
+      base: '/xiamen-parking/',
     },
   },
   'uniStatistics': {

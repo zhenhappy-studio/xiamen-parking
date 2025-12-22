@@ -43,5 +43,6 @@
     "navigationBarTextStyle": "@navTxtStyle",
     "navigationBarTitleText": "鹭岛停车"
   },
+  "__esModule": true,
   "subPackages": []
 }
